@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Review</title>
+    <link rel="stylesheet"href="/css/style.css"></link>
+</head>
+<body class =body_review>
+    <div class="review_header">
+        <h1 > Release your opinion in here </h1>
+        <p> This is the review page where you can provide your valuable feedback on the submissions. </p>
+        <a href="/home" class="back_home"> Back to the Home </a>
+    </div>
+    <div class="Product_flex">
+        <h1 class="Products_list">Review for: <%= product.product_name %></h1>
+        <img class ='Picprod_link' src="<%= product.Img_Path%>" alt ="Blender Logo" width="400" height="500" > 
+    </div>
+
+    <div class="review_option"> 
+        <form action="/review/<%= product.product_id %>" method="post" class="review_frame">
+            
+            <label for="comment"> Review </label> <br>
+            <textarea name="comment" rows="10" cols="30" required></textarea> <br>
+            <label>Satisfaction </label>
+            <div class="Rating">
+                <input type="radio" name="rating" id="star5" value="5" ><label for="star5">5 :⭐</label>
+                <input type="radio" name="rating" id="star4" value="4"><label for="star4">4 : ⭐</label>
+                <input type="radio" name="rating" id="star3" value="3"><label for="star3">3 : ⭐</label>
+                <input type="radio" name="rating" id="star2" value="2"><label for="star2">2 : ⭐</label>
+                <input type="radio" name="rating" id="star1" value="1"><label for="star1">1 : ⭐</label>
+
+            </div>
+            <button type="submit" class="submit_review"> Submit Review </button>
+        </form>
+    </div>
+
+    <!-- ส่วนแสดงคอมเม้นของลูกค้าคนอื่น   -->
+    <h2 class="h2_PreRev01"> Previous Reviews </h2>
+    <% if (text_comments.length === 0 ) { %>
+        <p> No comment yet ,You're the first person ! </p>
+        <% } else { %>
+        <div class="comment_container01"> 
+           <% text_comments.forEach(c => { %> 
+            <div class="review_comment_box">
+                <fieldset>
+                    <p class="comment_ID"> <strong> Review_ID: </strong> <%= c.review_id %> </p>
+                    <p class="comment_cust"> <small> Customer_id: </small> <%= c.Customer_id %> </p>
+                    <p class="comment_text"> <strong> Review: </strong> <%= c.comment %> </p>
+                    <p class="comment_score"> <strong> Rating: </strong> <%= c.rating %> ⭐ </p>     
+                    <p class="comment_date"> <small> Date: </small> <%= c.public_date %> </p>
+                    <% if (c.Customer_id === Customer_id) { %>
+                     <div class="review_actions">
+                        <a href="/review/edit/<%= c.review_id %>" class="edit-btn"> Edit </a>
+                            <form action="/review/delete/<%= c.review_id %>" method="POST" style="display:inline;">
+                                <button type="submit" class="delete-btn" onclick="return confirm('Are you sure ?')"> Delete </button>
+                            </form>
+                    </div>
+                     <% } %>
+                </fieldset>
+            </div>
+            <% }) %>
+        </div> 
+        <%}%>    
+
+</body>
+
+</html>

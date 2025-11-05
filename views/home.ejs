@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reviewer_Area</title>
+    <link rel="stylesheet"href="/css/style.css"></link>
+ 
+</head>
+<body class = 'body_home'>
+    <div class="header">
+        <h1> Hello Reviewer! </h1>
+        <p> Welcome to the Reviewer Area. Here you can review submissions and provide feedback. </p>
+    </div>
+
+    <div class="option">
+        <a href="#"> About</a>
+        <a href="#">Contact</a>    
+    </div>    
+    <h2 class = 'h2_01'>Select a product to review by Click</h2>
+
+
+<div class="product_container">
+  <% products.forEach(p => { %>
+    <div class="product_box">
+      <a href="/review/<%= p.product_id %>">
+        <img src="<%= p.Img_Path %>" width="200">
+        <p><%= p.product_name %></p>
+      </a>
+    </div>
+  <% }) %>
+</div>
+
+</body>
+</html>

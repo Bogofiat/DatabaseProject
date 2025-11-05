@@ -1,0 +1,280 @@
+/* public/styles.css */
+
+/* พื้นฐาน */
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  font: 16px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+  color: #1f2937;            /* เทาเข้มอ่านง่าย */
+  background: #f7f7fb;       /* พื้นหลังอ่อน */
+  padding: 32px 16px;
+}
+
+/* กึ่งกลางความกว้างเนื้อหา */
+body  * {
+  max-width: 860px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+/* จัดให้ชื่อสินค้าอยู่บนหัวรูป */
+.Product_flex {
+  display: flex;
+  flex-direction: column; /* ✅ เรียงหัวข้ออยู่บนรูป */
+  align-items: center; /* ✅ ให้อยู่กลางส่วนซ้าย */
+  gap: 10px;
+  width: 400px;
+  margin: 0 auto 30px;
+}
+
+/* ข้อความหัวข้อสินค้า */
+.Products_list {
+  margin: 0;
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* ปรับขนาดรูปกันทับ และให้อยู่กลาง */
+.Picprod_link {
+  width: 260px; /* ✅ กันไม่ให้ภาพไปชนฟอร์ม */
+  height: auto;
+  border-radius: 10px;
+}
+
+
+
+
+
+/* ฟอร์มรีวิว */
+
+.review_header{ grid-column: 1 / -1;  
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 20px;
+}
+
+.review_header .back_home{
+  text-decoration: none;
+  color: #000000;
+  background: #d1d5db;
+  padding: 8px 12px;
+  border-radius: 8px;
+}
+
+.review_option{ width: 100%; }        /* ให้คอลัมน์ขวากินเต็มช่อง */
+
+.review_option .review_frame{
+  width: 100%;
+  max-width: 100%;
+  background: #fff;
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0,0,0,.06);
+}
+
+.review_frame textarea{
+   resize: none; /* ไม่ให้ลุกค้าขยายกล่องเล่น*/
+}
+
+.review_frame label{ display:block; margin:12px 0 6px; }
+.review_frame input, .review_frame textarea{
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px 12px;
+  border: 1px solid #dcdde3;
+  border-radius: 8px;
+}
+
+
+.Rating {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  gap: 10px;
+}
+
+.Rating input {
+  display: none;
+}
+
+.Rating label {
+  font-size: 32px;
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+.Rating label:hover,
+.Rating label:hover ~ label {
+  color: gold;
+  transform: scale(1.2);
+}
+
+.Rating input:checked ~ label {
+  color: gold;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.h2_PreRev01{
+ grid-column: 1 / -1;  /*  ให้หัวข้อกินพื้นที่ทั้ง 2 คอลัมน์ */
+  text-align: center;   /*  จัดให้อยู่กึ่งกลาง */
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+
+.comment_container01 { 
+  display:flex;
+  flex-direction: column;
+  gap: 10px;             
+}
+  
+
+.review_comment_box {
+  width: 100%;               /* ให้เต็มกรอบ grid */
+  min-width: 0;              /*  สำคัญที่สุด บังคับให้ text ห่อบรรทัด */
+  white-space: normal;       /*  อนุญาตให้ขึ้นบรรทัดใหม่ */
+  overflow-wrap: anywhere;   /*  ตัดคำยาวๆ ได้ */
+  word-break: break-word;    /*  ผ่าคำแบบ aaaaaaaaaa ได้ */
+  background: #fff;
+  padding: 16px;
+  margin: 10px 0;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,.05);
+}
+
+.review_comment_box p {
+  font-size: 15px; 
+}
+
+
+.review_comment_box fieldset {
+  border: none;      
+  padding: 0;         
+  margin: 0;         
+}
+
+
+
+
+
+
+
+/*               Home                           */
+
+ .body_home {
+    background:url("/images/abstract-brown.jpg");
+    background-size: cover;
+    background-position: center;
+    /* ลบ backdrop-filter เพื่อเพิ่มประสิทธิภาพ */
+    background-color: rgba(0,0,0,0.3); /* เพิ่มความมืดนิดหน่อยแทน blur */
+    }
+
+/* ส่วนหัว */
+.header {
+  padding-bottom: 12px;
+  border-bottom: 1px solid #e5e7eb; 
+  margin-bottom: 20px; 
+  background-color: rgb(255, 255, 255);
+  text-align: center;
+  padding: 50px;  
+  color: brown; 
+  border-radius: 15px;
+}
+
+.header h1 { margin: 0 0 4px; font-size: 28px; }
+.header p { margin: 0; color: brown; font-size: 18px; }
+
+.h2_01 {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 8px 18px;
+    border-radius: 10px;
+    width: fit-content; /* ✅ ให้ความกว้างตามข้อความ */
+    margin: 20px auto; /* ✅ จัดให้อยู่กลาง */
+    text-align: center;
+    color: #000;
+    font-weight: bold;
+}
+
+
+
+
+
+/* ลิงก์เมนู */
+
+.option {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+    flex-direction: row;
+}
+
+
+.option a {
+  text-decoration: none;
+  color: #0f172a;
+  background: #eef2f7;
+  padding: 10px 14px;
+  border-radius: 10px;
+  transition: background .12s ease, transform .12s ease;
+}
+.option a:hover { background: #e2e8f0; transform: translateY(-1px); }
+
+/* ส่วนหัวของหน้ารีวิว */
+
+
+
+
+.product_container {
+    display: flex;
+    flex-wrap: wrap;           /* ✅ ล้นแล้วย้ายบรรทัด */
+    justify-content: center;   /* ✅ อยู่กลางหน้าจอ */
+    gap: 20px;                 /* ✅ ระยะห่างสินค้า */
+    padding: 20px;
+    max-width: 1000px;
+    margin: auto;              /* ✅ กึ่งกลางทั้งหมด */
+}
+
+.product_box {
+    background: rgb(255, 255, 255);
+    padding: 10px;  
+    border-radius: 12px;
+    text-align: center;
+    width: 220px;              /* ✅ ทุกชิ้นกว้างเท่ากัน */
+    backdrop-filter: blur(5px);
+    transition: transform 0.25s ease;
+}
+
+.product_box:hover {
+    transform: scale(1.05);
+}
+
+.product_box img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;         /* ✅ รูปไม่ยืดผิดสัดส่วน */
+    border-radius: 8px;
+}
+
+.product_box p {
+    color: black;
+    font-size: 18px;  
+    font-weight: bold;
+    margin-top: 10px;
+    text-decoration: none;
+}
+
+.product_box a {
+    text-decoration: none;
+}

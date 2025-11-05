@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Review</title>
+    <link rel="stylesheet" href="/css/style_editreview.css">
+</head>
+<body class = 'edit-body-review'>
+    <h2>Edit Your Review</h2>
+                    <!--    -->
+    <form class = "edit-review"  action="/review/edit/<%= review.review_id %>" method="POST">
+
+        <input type="hidden" name="product_id" value="<%= review.product_id %>">
+
+        <label class = 'Update-edit-label'>Update Review:</label><br>
+        <textarea class = 'edit-text-review' name="comment" rows="5" required><%= review.comment %></textarea><br><br>
+
+        <label>Update Rating:</label>
+        <input class = 'edit-rating-review' type="number" name="rating" min="1" max="5" value="<%= review.rating %>" required><br><br>
+
+        <button type="submit">💾 Save</button>
+    </form>
+
+    <br>
+    <a href="/review/<%= review.product_id %>">⬅ Back</a>
+</body>
+</html>

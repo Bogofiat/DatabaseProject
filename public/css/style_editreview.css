@@ -1,0 +1,41 @@
+
+/* edit-review page after press the edit button */
+
+
+
+.edit-review {
+    width: 90%;               /* ไม่เต็มจอ */
+    max-width: 600px;         /* จำกัดความกว้าง */
+    margin: 40px auto;        /* อยู่กลาง + มีที่ว่างด้านบน */
+    background: #fff;         /* ฟอร์มขาว */
+    padding: 24px;            /* ภายในไม่ชิด */
+    border-radius: 12px;      /* โค้งนิดๆ ดูแพงขึ้น */
+    box-shadow: 0px 4px 20px rgba(0,0,0,0.05);
+}
+
+.edit-review .Update-edit-label {
+     display: block;
+    margin-top: 14px;
+    font-size: 16px;
+    font-weight: 600; }
+
+.edit-body-review h2 {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.edit-review {
+  width: 100%;
+  max-width: 100%;
+}
+
+.edit-review .edit-text-review {
+  resize: none;
+   width: 100%;
+    min-height: 100px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1.8px solid rgb(177, 62, 62);
+    border-radius: 8px;
+}

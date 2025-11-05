@@ -1,0 +1,295 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Jersey+25&display=swap');
+
+
+* { 
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Jersey 25', sans-serif;
+
+}
+
+body {
+    display : flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    /*background:url("Sign In.svg") no-repeat;*/
+    background: url("/images/alek-olson-mFPsdN19T_4-unsplash.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+
+
+
+header{
+    position: fixed;
+    top: 0;
+    left : 0;
+    width: 100%;
+    padding : 20px 100px;   
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 99;
+
+}
+
+.Reviewer_Area {
+    font-size: 5em;
+    color: white;
+    user-select: none;
+    text-shadow:
+    1px 1px 2px black,
+   -1px 1px 2px black,
+    1px -1px 2px black,
+   -1px -1px 2px black;
+}
+
+.navigation-signin a {
+    position: relative;
+    font-size: 2.5em; 
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 40px;
+    background-color:white;
+    background: transparent;
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+
+}
+.navigation-signin a::after{
+    content: '';
+    position:absolute;
+    width: 100%;
+    height: 3px;
+    background-color: white;
+    left: 0;
+    bottom : -6px;
+    border-radius:5px;
+    transform-origin:right;
+    transform: scaleX(0);
+    transition: transform 0.3s;
+}
+.navigation-signin a:hover::after{
+    transform: scaleX(1);
+    transform-origin:left;
+}
+
+.navigation-signin .btnlogin-signin {
+    width: 130px;
+    height: 50px;
+    background: transparent;
+    border-radius: 8px;
+    border: 2px solid white;
+    outline: none;
+    cursor: pointer;
+    font-size: 2.2em;
+    color: white;
+    font-weight: 500;
+    margin-left: 40px;
+    transition: .5s;
+}
+.navigation-signin .btnlogin-signin:hover {
+    background-color: white;  /*กรอบนอกจะสีขาว เวลาเอาเม้าส์จ่อ*/
+    color: rgb(2, 1, 1);  /*เวลาที่แสดงเอฟเฟ็ก ตัวหนังสือจะเป็นสีตามนี้*/
+}
+
+.form-box-login h2 {
+  text-align: center;       
+  font-size: 3em;         
+  color: black;          
+  margin-bottom:25px;
+    
+}
+
+.form-box-login {
+  display: flex;
+  flex-direction: column;             /* ใช้ flex เพื่อจัด layout */
+  justify-content: center;    /* จัดกลางแนวนอน */
+  align-items: center;   /* พวกtag selector มันไม่ต้องเติม จุด(.) ข้างหน้าเหมือนพวก class selector*/
+  text-align: center; 
+}
+
+.wrapper{
+    position:relative;
+    width:400px ;
+    height: 500px;
+    background: transparent;
+    border: 2px solid ghostwhite;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 30px rgba(0,0,0,0.5);
+    border-radius: 10px;
+    display: flex;                           /* เพื่อจัดให้อยู่กลางแนวตั้ง */
+    justify-content: center;
+    align-items: center;
+
+}
+
+.input-box {
+  position:relative;
+  width:100%;
+  height: 50px;
+  border-bottom: 2px solid black;
+  margin: 20px 0; 
+}
+
+.input-box input:focus~ label,
+.input-box input:valid~ label {
+    top: -5px;
+    
+}
+
+
+.input-box label {
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    font-size: 1.2em;
+    color: white;
+    font-weight: 400;
+    pointer-events: none;
+    transition: .5s;
+}
+
+.input-box input {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    padding-right: 30px;
+    font-size: 1.5em;
+    color: white;
+    padding: 0 35px 0 5px;
+
+}
+
+.input-box .icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: white;
+    line-height: 57px;
+    
+    
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.login-form  .btnlogin {
+    display: block;
+    margin-left: 45px; /* ดันจากขอบซ้าย */
+ 
+}
+
+.remember-forgot { 
+    font-size: .9em;
+    color:white;
+    font-weight: 400;
+    margin: -15px 0 15px;
+    display: flex;
+    justify-content: space-between ;
+}
+
+.remember-forgot label input { 
+    accent-color: blue ;
+    margin-right:3px;
+}
+
+.remember-forgot a {
+    color: white;
+}
+
+.remember-forgot a:hover {
+    text-decoration: underline;
+}
+
+.button-box .btnlogin {
+    width: 85%;
+    height: 50px;
+    background: white;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    cursor: pointer;    
+    font-size: 1.8em;
+    color: black;
+    font-weight: 500;
+    transition: .5s;
+    margin-left: 15px;
+  
+}
+
+.login-form .Login-register {
+    font-size: 1.2em;
+    color: white;
+    text-align: center;
+    margin: 10px 0 10px 0;
+}
+
+.Login-register p a {
+    color: black;
+    font-size: 1.5em;
+    font-weight: 600;
+    text-decoration: none;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.Login-register p a:hover {
+    text-decoration:underline;
+  
+}
+
+
+
+
+.form-box-register h2 {
+    text-align: center;       
+    font-size: 3em;         
+    color: whitesmoke;          
+    margin-bottom:25px;
+      
+  }
+
+.Login-register02 p {
+    font-size: .9em;
+    color: white;
+    text-align: center;
+    margin: 10px 0 10px 0;
+}
+
+.form-box-login,
+.form-box-register {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    transition: 0.4s ease;
+}
+
+/* เริ่มต้น: แสดง Login ก่อน */
+.form-box-register {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* เมื่อมี active → โชว์ Register */
+.wrapper.active .form-box-login {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.wrapper.active .form-box-register {
+    opacity: 1;
+    pointer-events: auto;
+}

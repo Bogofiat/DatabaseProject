@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+    <link rel="stylesheet" href="/css/style-signin.css">
+
+</head>
+
+<body>
+
+    <header>
+        <h2 class = "Reviewer_Area"> Reviewer Area </h2>
+        <nav class = "navigation-signin"> 
+            <a href="/home"> Home </a>
+            <a href="#"> About </a>   
+            <button class="btnlogin-signin"> Login </button>
+        </nav>   
+    </header>
+    <div class = "wrapper"> 
+         <div class = "form-box-login"> 
+            <h2> Login</h2> 
+            <form action ="/login_gate" method="post"  class = "login-form">
+                <div class= "input-box"> 
+                    <span class = "icon"> <ion-icon name="mail"></ion-icon> </span>   
+                    <input type="email" name ='email' required>
+                    <label> Email </label>
+                </div>
+
+               <div class= "input-box">     
+                    <span class = "icon"><ion-icon name="lock-closed"></ion-icon> </span>   
+                    <input type="password" name='password'required>
+                    <label> Password </label>
+                    
+                </div>
+
+                <div class="remember-forgot">
+                    <label><input type="checkbox"> Remember me </label>
+                    <a href="#"> Forgot Password? </a>
+                </div>
+
+                <div class="button-box">  
+                    <button type="submit" class="btnlogin"> Login </button>
+                </div>
+
+                <div class = "Login-register">  
+                    <p> Don't have an account 
+                        <a href="#" class = "register-link"> Register </a> 
+                    </p>
+                </div>
+            </form>   
+         </div>
+    
+    <div class="form-box-register"> 
+        <h2> Register </h2> 
+        <form action="/register" method="post" class="Reg-form">
+        
+        <!-- Name_customer -->
+            <div class="input-box"> 
+                <span class="icon"><ion-icon name="person-outline"></ion-icon></span>   
+                <input type="text" name="first_name" required>
+                <label> FirstName </label>
+            </div>
+
+        <!-- Age -->
+            <div class="input-box"> 
+                <span class="icon"><ion-icon name="calendar-outline"></ion-icon></span>   
+                <input type="text" name="last_name" required >
+                <label> LastName </label>
+            </div>  
+
+        <!-- Sex ENUM -->
+        <div class="Sexinput-box">
+            <span class="icon"><ion-icon name="male-female-outline"></ion-icon></span>
+            <select name="sex" required>
+                <option value="" disabled selected>Gender </option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Others">Others</option>
+            </select>
+        </div>
+
+        <!-- Email -->
+        <div class="input-box"> 
+            <span class="icon"><ion-icon name="mail-outline"></ion-icon></span>   
+            <input type="email" name="email" required>
+            <label> Email </label>
+        </div>
+
+        <!-- Password -->
+        <div class="input-box"> 
+            <span class="icon"><ion-icon name="lock-closed-outline"></ion-icon></span>   
+            <input type="password" name="password" required minlength="6">
+            <label> Password </label>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="button-box">  
+            <button type="submit" class="btnlogin"> Register </button>
+        </div>
+
+        <!-- Switch to Login -->
+        <div class="Login-register02">  
+            <p> Already have an account? 
+                <a href="#" class="login-link"> Login </a> 
+            </p>
+        </div>
+      </form>  
+    </div>
+</div>    
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="/js/script.js"></script>
+</body>
+</html>
