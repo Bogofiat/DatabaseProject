@@ -27,8 +27,8 @@ app.use((req, res, next) => {
 });
 
 app.get('/', (req, res) => {    // app สร้างตัวจัดการ เส้นทางสำหรับคำขอ GET ที่ราก ('/') 
-// โดยมีฟังก์ชันที่รับพารามิเตอร์สองตัวคือ req (คำขอ) และ res (การตอบสนอง) ส่งไปยังมุมมอง 'home'
-  res.render('sign-in');         // => views/home.ejs
+// โดยมีฟังก์ชันที่รับพารามิเตอร์สองตัวคือ req (คำขอ) และ res (การตอบสนอง) ส่งไปยังมุมมอง 'sign-in'
+  res.render('sign-in');         // => views/sign-in.ejs
 });
 
 
@@ -197,7 +197,7 @@ app.post('/review/delete/:review_id', async (req, res) => {
         const review_id = req.params.review_id;
         const customer_id = req.session.Customer_id;
 
-        // ✅ ดึง product_id ก่อนลบ
+        // ✅ เช็คว่า รหัสลูกค้ากับ รีวิวมันถูกต้องกันไหม กันคนอื่นมากดมั่วๆ
         const [check] = await db.query(
             `SELECT product_id FROM review WHERE review_id = ? AND Customer_id = ?`,
             [review_id, customer_id]
