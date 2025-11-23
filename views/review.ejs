@@ -51,9 +51,9 @@
                     <p class="comment_date"> <small> Date: </small> <%= c.public_date %> </p>
                     <% if (c.Customer_id === Customer_id) { %>
                      <div class="review_actions">
-                        <a href="/review/edit/<%= c.review_id %>" class="edit-btn"> Edit </a>
+                        <a href="/review/edit/<%= c.review_id %>" class="edit-btn"> Edit 🖍 </a>
                             <form action="/review/delete/<%= c.review_id %>" method="POST" style="display:inline;">
-                                <button type="submit" class="delete-btn" onclick="return confirm('Are you sure ?')"> Delete </button>
+                                <button type="submit" class="delete-btn" onclick="return confirm('Do you want to delete it ?')"> Delete 🗑 </button>
                             </form>
                     </div>
                      <% } %>

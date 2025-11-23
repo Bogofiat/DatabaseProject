@@ -22,27 +22,28 @@ app.use(session({
 }));
 
 app.use((req, res, next) => {
-    res.locals.Customer_id = req.session.Customer_id || null;
-    next();
+    res.locals.Customer_id = req.session.Customer_id || null; // ทำให้ตัวแปร customer_id สามารถเข้าถึงได้ในทุกมุมมอง (views)
+    next();  // เรียกใช้ฟังก์ชันถัดไปในลำดับ middleware  middleware คือ ฟังก์ชันที่ทำงานระหว่างการรับคำขอ (request) และการส่งคำตอบ (response)
+            // โดยการเรียกใช้ next() จะทำให้ Express รู้ว่าควรไปที่ middleware ถัดไปหรือไปยังตัวจัดการเส้นทาง (route handler) ถัดไป
 });
 
 app.get('/', (req, res) => {    // app สร้างตัวจัดการ เส้นทางสำหรับคำขอ GET ที่ราก ('/') 
-// โดยมีฟังก์ชันที่รับพารามิเตอร์สองตัวคือ req (คำขอ) และ res (การตอบสนอง) ส่งไปยังมุมมอง 'home'
-  res.render('sign-in');         // => views/home.ejs
+// โดยมีฟังก์ชันที่รับพารามิเตอร์สองตัวคือ req (คำขอ) และ res (การตอบสนอง) ส่งไปยังมุมมอง 'จุดเริ่ม้ต้น'
+  res.render('sign-in');         
 });
 
 
 
-app.post('/register', async (req, res) => {
+app.post('/register', async (req, res) => { // ตัวจัดการเส้นทางสำหรับคำขอ POST ที่ '/register'
     try {
         const { first_name, last_name, sex, email, password } = req.body;
 
-        const sql = `
+        const sql = ` 
             INSERT INTO customer (First_name, Last_name, Sex, Email, password, Create_date)
             VALUES (?, ?, ?, ?, ?, NOW())
-        `;
+        `; // SQL สำหรับการแทรกข้อมูลผู้ใช้ใหม่ลงในตาราง customer โดยใช้เครื่องหมายคำถาม (?) เป็นตัวแทนค่าที่จะถูกแทนที่ในภายหลัง
 
-        await db.query(sql, [first_name, last_name, sex, email, password]);
+        await db.query(sql, [first_name, last_name, sex, email, password]); //
 
         return res.redirect('/');
     } catch (err) {
@@ -76,6 +77,11 @@ app.post('/login_gate', async (req,res) => {
     }
 });
 
+app.post('/logout', (req, res) => {
+  req.session.destroy(() => {
+    res.redirect('/'); // กลับไปหน้า แรก โดย '/' ผมกำหนดให้มันเป็นหน้าแรก
+  })
+});
 
 
 
@@ -129,11 +135,25 @@ app.post('/review/:product_id', async (req, res) => {
     try {
         const product_id = req.params.product_id;
         const customer_id = req.session.Customer_id;
-        const { comment,rating } = req.body;
+        const {comment,rating } = req.body;
         
         if (!customer_id) {
-            return res.redirect('/'); // สมมติ พิเรน เข้ามาหน้าริวิวแต่ไม่ได้login พอกุsubmit ก็จะเด้งไปหน้าlogin
+            return res.redirect('/'); // สมมติ พิเรน เข้ามาหน้าริวิวแต่ไม่ได้login พอกดsubmit ก็จะเด้งไปหน้าlogin 
         }
+
+        const [exists] = await db.query(
+            `SELECT review_id FROM review 
+             WHERE Customer_id = ? AND product_id = ?`,
+            [customer_id, product_id]
+        );
+
+        if (exists.length > 0) {
+             return res.send(`
+            <script>
+                alert("คุณได้รีวิวสินค้านี้ไปแล้ว ไม่สามารถรีวิวซ้ำได้");
+                window.location.href = "/review/${product_id}";
+            </script> `);
+            }
 
         await db.query(
             `INSERT INTO review (Customer_id, product_id,rating,comment, public_date)
@@ -206,7 +226,7 @@ app.post('/review/delete/:review_id', async (req, res) => {
         if (check.length === 0)
             return res.status(403).send("Unauthorized");
 
-        const product_id = check[0].product_id;
+            const product_id = check[0].product_id;
 
         // ✅ ลบจริง
         await db.query(

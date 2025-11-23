@@ -7,20 +7,26 @@
     <link rel="stylesheet"href="/css/style.css"></link>
  
 </head>
-<body class = 'body_home'>
+<body  class ='body_home'>
+
+
     <div class="header">
         <h1> Hello Reviewer! </h1>
-        <p> Welcome to the Reviewer Area. Here you can review submissions and provide feedback. </p>
+        <p> Welcome to the Reviewer Area, Here you can review submissions and provide feedback. </p>
     </div>
-
-    <div class="option">
-        <a href="#"> About</a>
-        <a href="#">Contact</a>    
-    </div>    
+    
+     <% if (Customer_id) { %>
+        <!-- ✅ แสดงปุ่ม Logout เฉพาะคนที่ล็อกอิน -->
+        <form action="/logout" method="POST">
+            <button type="submit" class="logout_btn">Logout</button>
+        </form>
+    <% } else { %>
+        <!-- ✅ แสดงปุ่ม Login สำหรับ Guest -->
+        <a href="/" class="logout_btn">Login</a>
+    <% } %>
+  
     <h2 class = 'h2_01'>Select a product to review by Click</h2>
-
-
-<div class="product_container">
+  <div class="product_container">
   <% products.forEach(p => { %>
     <div class="product_box">
       <a href="/review/<%= p.product_id %>">
@@ -29,7 +35,7 @@
       </a>
     </div>
   <% }) %>
-</div>
+  </div>
 
 </body>
 </html>

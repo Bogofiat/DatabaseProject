@@ -165,6 +165,28 @@ body  * {
   margin: 0;         
 }
 
+.edit-btn {
+  text-decoration: none;
+  padding: 8px 12px;
+  margin-right: 10px;
+  color: black;
+  background:rgb(197, 250, 117);
+  border-radius: 8px; 
+  border: 2px solid black;
+}
+
+.edit-btn:hover{
+  background: #a3aabb;
+}
+
+.delete-btn {
+  text-decoration: none;
+  padding: 8px 12px;
+  color: white;
+  background: rgb(223, 93, 93);
+  border-radius: 8px; 
+  border: 2px solid black;
+}
 
 
 
@@ -205,9 +227,29 @@ body  * {
     text-align: center;
     color: #000;
     font-weight: bold;
+    width: auto;
 }
 
 
+.logout_btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+ text-decoration: none;
+  color: white;
+  background: #a0522d;
+   width: 150px; 
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+
+}
+
+.logout_btn:hover {
+  background: #a0522d; /* สีเข้มขึ้นตอน hover */
+}
 
 
 
