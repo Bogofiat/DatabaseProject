@@ -38,6 +38,20 @@ app.post('/register', async (req, res) => { // ตัวจัดการเส
     try {
         const { first_name, last_name, sex, email, password } = req.body;
 
+         const [existingUser] = await db.query(
+            `SELECT Email FROM customer WHERE Email = ?`,
+            [email]
+        );
+
+        if (existingUser.length > 0) { // ตรวจสอบว่าอีเมลนี้มีอยู่ในระบบแล้วหรือไม่
+            return res.send(`
+                <script>
+                    alert("อีเมลนี้ถูกใช้งานแล้ว กรุณาใช้อีเมลอื่น");
+                    window.history.back();
+                </script>
+            `);
+        }
+
         const sql = ` 
             INSERT INTO customer (First_name, Last_name, Sex, Email, password, Create_date)
             VALUES (?, ?, ?, ?, ?, NOW())
