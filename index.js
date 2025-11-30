@@ -101,7 +101,12 @@ app.post('/logout', (req, res) => {
 
 app.get('/home', async (req, res) => {
     try {
-        const [products] = await db.query("SELECT * FROM product LIMIT 5");
+        const [products] = await db.query(`
+            SELECT product.*, brand.brand_name 
+            FROM product 
+            JOIN brand ON product.brand_id = brand.brand_id
+            LIMIT 5
+        `);
         console.log("➡ AT HOME | Session:", req.session.Customer_id);
         res.render('home', { products });
     } catch (err) {
@@ -116,7 +121,10 @@ app.get('/review/:product_id', async (req, res) => {
         const product_id = req.params.product_id;
 
         const [products] = await db.query(
-            `SELECT * FROM product WHERE product_id = ?`,
+            `SELECT product.*, brand.brand_name 
+             FROM product
+             JOIN brand ON product.brand_id = brand.brand_id
+             WHERE product.product_id = ?`,
             [product_id]
         );
 
